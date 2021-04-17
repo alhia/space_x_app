@@ -30,6 +30,7 @@ dependencies:
   ferry_flutter: ^0.5.1-0.1.nullsafety.0
   hive: ^2.0.2
   hive_flutter: ^1.0.0
+  cached_network_image: ^3.0.0-nullsafety
 
 
   # The following adds the Cupertino Icons font to your application.

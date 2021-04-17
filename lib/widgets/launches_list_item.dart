@@ -9,9 +9,10 @@ class LaunchesListItem extends StatelessWidget {
   }) : super(key: key);
 
   final GFetchLaunchesData_launches launch;
-
   @override
   Widget build(BuildContext context) {
+    print(launch.links!.mission_patch!);
+
     final theme = Theme.of(context);
     return Container(
       margin: EdgeInsets.all(8),
@@ -49,7 +50,11 @@ class LaunchesListItem extends StatelessWidget {
                   : "Failure",
           style: theme.textTheme.subtitle2!.copyWith(color: Colors.grey),
         ),
-        trailing: launch.links?.mission_patch != null ? Image.network(launch.links!.mission_patch!) : Container(),
+        trailing: launch.links?.mission_patch != null
+            ? Image.network(
+                launch.links!.mission_patch!,
+              )
+            : Container(),
       ),
     );
   }

@@ -30,6 +30,12 @@ class _$GFetchLaunchesVarsSerializer
         ..add('limit')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
+    value = object.offset;
+    if (value != null) {
+      result
+        ..add('offset')
+        ..add(serializers.serialize(value, specifiedType: const FullType(int)));
+    }
     return result;
   }
 
@@ -47,6 +53,10 @@ class _$GFetchLaunchesVarsSerializer
       switch (key) {
         case 'limit':
           result.limit = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'offset':
+          result.offset = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
       }
@@ -100,12 +110,14 @@ class _$GFetchLaunchVarsSerializer
 class _$GFetchLaunchesVars extends GFetchLaunchesVars {
   @override
   final int? limit;
+  @override
+  final int? offset;
 
   factory _$GFetchLaunchesVars(
           [void Function(GFetchLaunchesVarsBuilder)? updates]) =>
       (new GFetchLaunchesVarsBuilder()..update(updates)).build();
 
-  _$GFetchLaunchesVars._({this.limit}) : super._();
+  _$GFetchLaunchesVars._({this.limit, this.offset}) : super._();
 
   @override
   GFetchLaunchesVars rebuild(
@@ -119,18 +131,21 @@ class _$GFetchLaunchesVars extends GFetchLaunchesVars {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is GFetchLaunchesVars && limit == other.limit;
+    return other is GFetchLaunchesVars &&
+        limit == other.limit &&
+        offset == other.offset;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, limit.hashCode));
+    return $jf($jc($jc(0, limit.hashCode), offset.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GFetchLaunchesVars')
-          ..add('limit', limit))
+          ..add('limit', limit)
+          ..add('offset', offset))
         .toString();
   }
 }
@@ -143,12 +158,17 @@ class GFetchLaunchesVarsBuilder
   int? get limit => _$this._limit;
   set limit(int? limit) => _$this._limit = limit;
 
+  int? _offset;
+  int? get offset => _$this._offset;
+  set offset(int? offset) => _$this._offset = offset;
+
   GFetchLaunchesVarsBuilder();
 
   GFetchLaunchesVarsBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
       _limit = $v.limit;
+      _offset = $v.offset;
       _$v = null;
     }
     return this;
@@ -167,7 +187,8 @@ class GFetchLaunchesVarsBuilder
 
   @override
   _$GFetchLaunchesVars build() {
-    final _$result = _$v ?? new _$GFetchLaunchesVars._(limit: limit);
+    final _$result =
+        _$v ?? new _$GFetchLaunchesVars._(limit: limit, offset: offset);
     replace(_$result);
     return _$result;
   }

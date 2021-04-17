@@ -39,7 +39,7 @@ class LaunchesListView extends StatelessWidget {
       ),
       body: Operation(
         client: getIt<Client>(),
-        operationRequest: GFetchLaunchesReq((b) => b..vars.limit = 25),
+        operationRequest: GFetchLaunchesReq((b) => b..vars.limit = 50),
         builder: (
           BuildContext context,
           OperationResponse<GFetchLaunchesData, GFetchLaunchesVars>? response,
@@ -47,7 +47,6 @@ class LaunchesListView extends StatelessWidget {
         ) {
           if (response!.loading) return Center(child: CircularProgressIndicator());
           if (response.hasErrors) {
-            print('yoo');
             print(response.linkException);
           }
           if (response.data?.launches != null) {

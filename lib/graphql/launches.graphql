@@ -1,5 +1,5 @@
-query FetchLaunches($limit: Int = 10) {
-  launches(limit: $limit) {
+query FetchLaunches($limit: Int = 10, $offset: Int = 0) {
+  launches(limit: $limit, offset: $offset) {
     mission_name
     launch_date_utc
     launch_success

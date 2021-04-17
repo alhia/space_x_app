@@ -14,6 +14,7 @@ abstract class GFetchLaunchesVars
       _$GFetchLaunchesVars;
 
   int? get limit;
+  int? get offset;
   static Serializer<GFetchLaunchesVars> get serializer =>
       _$gFetchLaunchesVarsSerializer;
   Map<String, dynamic> toJson() =>

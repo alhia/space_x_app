@@ -13,21 +13,16 @@ class LaunchView extends StatelessWidget {
   LaunchView({required this.launchID});
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         child: ClipRRect(
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
             child: AppBar(
-              backgroundColor: Colors.black.withOpacity(0.2),
+              backgroundColor: Colors.white.withOpacity(0.2),
               title: Text(
                 'Launches',
-              ),
-              leading: Row(
-                children: [
-                  Icon(Icons.chevron_left),
-                ],
               ),
               elevation: 0.0,
             ),
@@ -52,7 +47,76 @@ class LaunchView extends StatelessWidget {
 
           return Container(
             child: Column(
-              children: <Widget>[if (launch?.links?.flickr_images?.first != null) Image.network(launch!.links!.flickr_images!.first)],
+              children: <Widget>[
+                if (launch?.links?.flickr_images != null && launch!.links!.flickr_images!.isNotEmpty)
+                  Image.network(
+                    launch.links!.flickr_images!.first,
+                  ),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    children: <Widget>[
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Payload',
+                            style: theme.textTheme.subtitle1!.copyWith(color: Colors.red),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Customer",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.grey),
+                              ),
+                              Text(
+                                launch?.rocket?.second_stage?.payloads?.first.customers?.first ?? "",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Country",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.grey),
+                              ),
+                              Text(
+                                launch?.rocket?.second_stage?.payloads?.first.nationality ?? "",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Mass (in KG)",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.grey),
+                              ),
+                              Text(
+                                launch?.rocket?.second_stage?.payloads?.first.payload_mass_kg.toString() ?? "",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                "Orbit",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.grey),
+                              ),
+                              Text(
+                                launch?.rocket?.second_stage?.payloads?.first.orbit ?? "",
+                                style: theme.textTheme.subtitle1!.copyWith(color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           );
         },
