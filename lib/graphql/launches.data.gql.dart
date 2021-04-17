@@ -42,11 +42,11 @@ abstract class GFetchLaunchesData_launches
       b..G__typename = 'Launch';
   @BuiltValueField(wireName: '__typename')
   String get G__typename;
-  String? get id;
   String? get mission_name;
   _i2.GDate? get launch_date_utc;
   bool? get launch_success;
   GFetchLaunchesData_launches_links? get links;
+  String? get id;
   static Serializer<GFetchLaunchesData_launches> get serializer =>
       _$gFetchLaunchesDataLaunchesSerializer;
   Map<String, dynamic> toJson() => (_i1.serializers.serializeWith(

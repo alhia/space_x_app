@@ -30,7 +30,7 @@ abstract class GFetchLaunchVars
   factory GFetchLaunchVars([Function(GFetchLaunchVarsBuilder b) updates]) =
       _$GFetchLaunchVars;
 
-  String? get id;
+  String get id;
   static Serializer<GFetchLaunchVars> get serializer =>
       _$gFetchLaunchVarsSerializer;
   Map<String, dynamic> toJson() =>

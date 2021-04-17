@@ -27,12 +27,6 @@ const FetchLaunches = _i1.OperationDefinitionNode(
           directives: [],
           selectionSet: _i1.SelectionSetNode(selections: [
             _i1.FieldNode(
-                name: _i1.NameNode(value: 'id'),
-                alias: null,
-                arguments: [],
-                directives: [],
-                selectionSet: null),
-            _i1.FieldNode(
                 name: _i1.NameNode(value: 'mission_name'),
                 alias: null,
                 arguments: [],
@@ -62,7 +56,13 @@ const FetchLaunches = _i1.OperationDefinitionNode(
                       arguments: [],
                       directives: [],
                       selectionSet: null)
-                ]))
+                ])),
+            _i1.FieldNode(
+                name: _i1.NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null)
           ]))
     ]));
 const FetchLaunch = _i1.OperationDefinitionNode(
@@ -72,7 +72,7 @@ const FetchLaunch = _i1.OperationDefinitionNode(
       _i1.VariableDefinitionNode(
           variable: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
           type: _i1.NamedTypeNode(
-              name: _i1.NameNode(value: 'String'), isNonNull: false),
+              name: _i1.NameNode(value: 'ID'), isNonNull: true),
           defaultValue: _i1.DefaultValueNode(value: null),
           directives: [])
     ],

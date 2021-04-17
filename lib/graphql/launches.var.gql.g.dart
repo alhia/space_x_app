@@ -66,15 +66,11 @@ class _$GFetchLaunchVarsSerializer
   @override
   Iterable<Object?> serialize(Serializers serializers, GFetchLaunchVars object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
+    final result = <Object?>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+    ];
+
     return result;
   }
 
@@ -179,13 +175,15 @@ class GFetchLaunchesVarsBuilder
 
 class _$GFetchLaunchVars extends GFetchLaunchVars {
   @override
-  final String? id;
+  final String id;
 
   factory _$GFetchLaunchVars(
           [void Function(GFetchLaunchVarsBuilder)? updates]) =>
       (new GFetchLaunchVarsBuilder()..update(updates)).build();
 
-  _$GFetchLaunchVars._({this.id}) : super._();
+  _$GFetchLaunchVars._({required this.id}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(id, 'GFetchLaunchVars', 'id');
+  }
 
   @override
   GFetchLaunchVars rebuild(void Function(GFetchLaunchVarsBuilder) updates) =>
@@ -245,7 +243,10 @@ class GFetchLaunchVarsBuilder
 
   @override
   _$GFetchLaunchVars build() {
-    final _$result = _$v ?? new _$GFetchLaunchVars._(id: id);
+    final _$result = _$v ??
+        new _$GFetchLaunchVars._(
+            id: BuiltValueNullFieldError.checkNotNull(
+                id, 'GFetchLaunchVars', 'id'));
     replace(_$result);
     return _$result;
   }

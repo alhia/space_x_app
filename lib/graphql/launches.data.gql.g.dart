@@ -107,13 +107,6 @@ class _$GFetchLaunchesData_launchesSerializer
           specifiedType: const FullType(String)),
     ];
     Object? value;
-    value = object.id;
-    if (value != null) {
-      result
-        ..add('id')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(String)));
-    }
     value = object.mission_name;
     if (value != null) {
       result
@@ -142,6 +135,13 @@ class _$GFetchLaunchesData_launchesSerializer
         ..add(serializers.serialize(value,
             specifiedType: const FullType(GFetchLaunchesData_launches_links)));
     }
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
     return result;
   }
 
@@ -161,10 +161,6 @@ class _$GFetchLaunchesData_launchesSerializer
           result.G__typename = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'id':
-          result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
-          break;
         case 'mission_name':
           result.mission_name = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -182,6 +178,10 @@ class _$GFetchLaunchesData_launchesSerializer
                   specifiedType:
                       const FullType(GFetchLaunchesData_launches_links))!
               as GFetchLaunchesData_launches_links);
+          break;
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -779,8 +779,6 @@ class _$GFetchLaunchesData_launches extends GFetchLaunchesData_launches {
   @override
   final String G__typename;
   @override
-  final String? id;
-  @override
   final String? mission_name;
   @override
   final _i2.GDate? launch_date_utc;
@@ -788,6 +786,8 @@ class _$GFetchLaunchesData_launches extends GFetchLaunchesData_launches {
   final bool? launch_success;
   @override
   final GFetchLaunchesData_launches_links? links;
+  @override
+  final String? id;
 
   factory _$GFetchLaunchesData_launches(
           [void Function(GFetchLaunchesData_launchesBuilder)? updates]) =>
@@ -795,11 +795,11 @@ class _$GFetchLaunchesData_launches extends GFetchLaunchesData_launches {
 
   _$GFetchLaunchesData_launches._(
       {required this.G__typename,
-      this.id,
       this.mission_name,
       this.launch_date_utc,
       this.launch_success,
-      this.links})
+      this.links,
+      this.id})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(
         G__typename, 'GFetchLaunchesData_launches', 'G__typename');
@@ -819,11 +819,11 @@ class _$GFetchLaunchesData_launches extends GFetchLaunchesData_launches {
     if (identical(other, this)) return true;
     return other is GFetchLaunchesData_launches &&
         G__typename == other.G__typename &&
-        id == other.id &&
         mission_name == other.mission_name &&
         launch_date_utc == other.launch_date_utc &&
         launch_success == other.launch_success &&
-        links == other.links;
+        links == other.links &&
+        id == other.id;
   }
 
   @override
@@ -831,22 +831,22 @@ class _$GFetchLaunchesData_launches extends GFetchLaunchesData_launches {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, G__typename.hashCode), id.hashCode),
-                    mission_name.hashCode),
-                launch_date_utc.hashCode),
-            launch_success.hashCode),
-        links.hashCode));
+                $jc($jc($jc(0, G__typename.hashCode), mission_name.hashCode),
+                    launch_date_utc.hashCode),
+                launch_success.hashCode),
+            links.hashCode),
+        id.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('GFetchLaunchesData_launches')
           ..add('G__typename', G__typename)
-          ..add('id', id)
           ..add('mission_name', mission_name)
           ..add('launch_date_utc', launch_date_utc)
           ..add('launch_success', launch_success)
-          ..add('links', links))
+          ..add('links', links)
+          ..add('id', id))
         .toString();
   }
 }
@@ -860,10 +860,6 @@ class GFetchLaunchesData_launchesBuilder
   String? _G__typename;
   String? get G__typename => _$this._G__typename;
   set G__typename(String? G__typename) => _$this._G__typename = G__typename;
-
-  String? _id;
-  String? get id => _$this._id;
-  set id(String? id) => _$this._id = id;
 
   String? _mission_name;
   String? get mission_name => _$this._mission_name;
@@ -886,6 +882,10 @@ class GFetchLaunchesData_launchesBuilder
   set links(GFetchLaunchesData_launches_linksBuilder? links) =>
       _$this._links = links;
 
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
   GFetchLaunchesData_launchesBuilder() {
     GFetchLaunchesData_launches._initializeBuilder(this);
   }
@@ -894,11 +894,11 @@ class GFetchLaunchesData_launchesBuilder
     final $v = _$v;
     if ($v != null) {
       _G__typename = $v.G__typename;
-      _id = $v.id;
       _mission_name = $v.mission_name;
       _launch_date_utc = $v.launch_date_utc?.toBuilder();
       _launch_success = $v.launch_success;
       _links = $v.links?.toBuilder();
+      _id = $v.id;
       _$v = null;
     }
     return this;
@@ -923,11 +923,11 @@ class GFetchLaunchesData_launchesBuilder
           new _$GFetchLaunchesData_launches._(
               G__typename: BuiltValueNullFieldError.checkNotNull(
                   G__typename, 'GFetchLaunchesData_launches', 'G__typename'),
-              id: id,
               mission_name: mission_name,
               launch_date_utc: _launch_date_utc?.build(),
               launch_success: launch_success,
-              links: _links?.build());
+              links: _links?.build(),
+              id: id);
     } catch (_) {
       late String _$failedField;
       try {

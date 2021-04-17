@@ -46,15 +46,22 @@ class LaunchesListView extends StatelessWidget {
           Object? error,
         ) {
           if (response!.loading) return Center(child: CircularProgressIndicator());
-
-          final launches = response.data?.launches!;
-          return ListView.builder(
-            itemCount: launches!.length,
-            itemBuilder: (context, index) {
-              final launch = launches[index];
-              return LaunchesListItem(launch: launch);
-            },
-          );
+          if (response.hasErrors) {
+            print('yoo');
+            print(response.linkException);
+          }
+          if (response.data?.launches != null) {
+            final launches = response.data!.launches!;
+            return ListView.builder(
+              itemCount: launches.length,
+              itemBuilder: (context, index) {
+                final launch = launches[index];
+                return LaunchesListItem(launch: launch);
+              },
+            );
+          } else {
+            return Container();
+          }
         },
       ),
     );

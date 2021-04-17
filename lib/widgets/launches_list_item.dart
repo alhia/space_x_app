@@ -20,7 +20,7 @@ class LaunchesListItem extends StatelessWidget {
         contentPadding: EdgeInsets.all(8),
         onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LaunchView(launchID: "launch.")),
+          MaterialPageRoute(builder: (context) => LaunchView(launchID: launch.id ?? "")),
         ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
