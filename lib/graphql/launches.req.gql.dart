@@ -48,3 +48,41 @@ abstract class GFetchLaunchesReq
   static GFetchLaunchesReq? fromJson(Map<String, dynamic> json) =>
       _i6.serializers.deserializeWith(GFetchLaunchesReq.serializer, json);
 }
+
+abstract class GFetchLaunchReq
+    implements
+        Built<GFetchLaunchReq, GFetchLaunchReqBuilder>,
+        _i1.OperationRequest<_i2.GFetchLaunchData, _i3.GFetchLaunchVars> {
+  GFetchLaunchReq._();
+
+  factory GFetchLaunchReq([Function(GFetchLaunchReqBuilder b) updates]) =
+      _$GFetchLaunchReq;
+
+  static void _initializeBuilder(GFetchLaunchReqBuilder b) => b
+    ..operation =
+        _i4.Operation(document: _i5.document, operationName: 'FetchLaunch')
+    ..executeOnListen = true;
+  _i3.GFetchLaunchVars get vars;
+  _i4.Operation get operation;
+  _i4.Request get execRequest =>
+      _i4.Request(operation: operation, variables: vars.toJson());
+  String? get requestId;
+  @BuiltValueField(serialize: false)
+  _i2.GFetchLaunchData? Function(_i2.GFetchLaunchData?, _i2.GFetchLaunchData?)?
+      get updateResult;
+  _i2.GFetchLaunchData? get optimisticResponse;
+  String? get updateCacheHandlerKey;
+  Map<String, dynamic>? get updateCacheHandlerContext;
+  _i1.FetchPolicy? get fetchPolicy;
+  bool get executeOnListen;
+  @override
+  _i2.GFetchLaunchData? parseData(Map<String, dynamic> json) =>
+      _i2.GFetchLaunchData.fromJson(json);
+  static Serializer<GFetchLaunchReq> get serializer =>
+      _$gFetchLaunchReqSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i6.serializers.serializeWith(GFetchLaunchReq.serializer, this)
+          as Map<String, dynamic>);
+  static GFetchLaunchReq? fromJson(Map<String, dynamic> json) =>
+      _i6.serializers.deserializeWith(GFetchLaunchReq.serializer, json);
+}

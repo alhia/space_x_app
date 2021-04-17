@@ -5,13 +5,19 @@ import 'package:gql_code_builder/src/serializers/operation_serializer.dart'
     show OperationSerializer;
 import 'package:space_x_app/graphql/launches.data.gql.dart'
     show
+        GFetchLaunchData,
+        GFetchLaunchData_launch,
+        GFetchLaunchData_launch_links,
+        GFetchLaunchData_launch_rocket,
+        GFetchLaunchData_launch_rocket_second_stage,
+        GFetchLaunchData_launch_rocket_second_stage_payloads,
         GFetchLaunchesData,
         GFetchLaunchesData_launches,
         GFetchLaunchesData_launches_links;
 import 'package:space_x_app/graphql/launches.req.gql.dart'
-    show GFetchLaunchesReq;
+    show GFetchLaunchReq, GFetchLaunchesReq;
 import 'package:space_x_app/graphql/launches.var.gql.dart'
-    show GFetchLaunchesVars;
+    show GFetchLaunchVars, GFetchLaunchesVars;
 import 'package:space_x_app/graphql/rockets.data.gql.dart'
     show GFetchRocketsData, GFetchRocketsData_rockets;
 import 'package:space_x_app/graphql/rockets.req.gql.dart' show GFetchRocketsReq;
@@ -38,6 +44,14 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GCapsulesFind,
   GCoresFind,
   GDate,
+  GFetchLaunchData,
+  GFetchLaunchData_launch,
+  GFetchLaunchData_launch_links,
+  GFetchLaunchData_launch_rocket,
+  GFetchLaunchData_launch_rocket_second_stage,
+  GFetchLaunchData_launch_rocket_second_stage_payloads,
+  GFetchLaunchReq,
+  GFetchLaunchVars,
   GFetchLaunchesData,
   GFetchLaunchesData_launches,
   GFetchLaunchesData_launches_links,

@@ -8,6 +8,8 @@ part of 'launches.var.gql.dart';
 
 Serializer<GFetchLaunchesVars> _$gFetchLaunchesVarsSerializer =
     new _$GFetchLaunchesVarsSerializer();
+Serializer<GFetchLaunchVars> _$gFetchLaunchVarsSerializer =
+    new _$GFetchLaunchVarsSerializer();
 
 class _$GFetchLaunchesVarsSerializer
     implements StructuredSerializer<GFetchLaunchesVars> {
@@ -46,6 +48,51 @@ class _$GFetchLaunchesVarsSerializer
         case 'limit':
           result.limit = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GFetchLaunchVarsSerializer
+    implements StructuredSerializer<GFetchLaunchVars> {
+  @override
+  final Iterable<Type> types = const [GFetchLaunchVars, _$GFetchLaunchVars];
+  @override
+  final String wireName = 'GFetchLaunchVars';
+
+  @override
+  Iterable<Object?> serialize(Serializers serializers, GFetchLaunchVars object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object?>[];
+    Object? value;
+    value = object.id;
+    if (value != null) {
+      result
+        ..add('id')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  GFetchLaunchVars deserialize(
+      Serializers serializers, Iterable<Object?> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GFetchLaunchVarsBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final Object? value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
           break;
       }
     }
@@ -125,6 +172,80 @@ class GFetchLaunchesVarsBuilder
   @override
   _$GFetchLaunchesVars build() {
     final _$result = _$v ?? new _$GFetchLaunchesVars._(limit: limit);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$GFetchLaunchVars extends GFetchLaunchVars {
+  @override
+  final String? id;
+
+  factory _$GFetchLaunchVars(
+          [void Function(GFetchLaunchVarsBuilder)? updates]) =>
+      (new GFetchLaunchVarsBuilder()..update(updates)).build();
+
+  _$GFetchLaunchVars._({this.id}) : super._();
+
+  @override
+  GFetchLaunchVars rebuild(void Function(GFetchLaunchVarsBuilder) updates) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  GFetchLaunchVarsBuilder toBuilder() =>
+      new GFetchLaunchVarsBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is GFetchLaunchVars && id == other.id;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, id.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('GFetchLaunchVars')..add('id', id))
+        .toString();
+  }
+}
+
+class GFetchLaunchVarsBuilder
+    implements Builder<GFetchLaunchVars, GFetchLaunchVarsBuilder> {
+  _$GFetchLaunchVars? _$v;
+
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
+
+  GFetchLaunchVarsBuilder();
+
+  GFetchLaunchVarsBuilder get _$this {
+    final $v = _$v;
+    if ($v != null) {
+      _id = $v.id;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(GFetchLaunchVars other) {
+    ArgumentError.checkNotNull(other, 'other');
+    _$v = other as _$GFetchLaunchVars;
+  }
+
+  @override
+  void update(void Function(GFetchLaunchVarsBuilder)? updates) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$GFetchLaunchVars build() {
+    final _$result = _$v ?? new _$GFetchLaunchVars._(id: id);
     replace(_$result);
     return _$result;
   }

@@ -27,6 +27,12 @@ const FetchLaunches = _i1.OperationDefinitionNode(
           directives: [],
           selectionSet: _i1.SelectionSetNode(selections: [
             _i1.FieldNode(
+                name: _i1.NameNode(value: 'id'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: null),
+            _i1.FieldNode(
                 name: _i1.NameNode(value: 'mission_name'),
                 alias: null,
                 arguments: [],
@@ -59,4 +65,93 @@ const FetchLaunches = _i1.OperationDefinitionNode(
                 ]))
           ]))
     ]));
-const document = _i1.DocumentNode(definitions: [FetchLaunches]);
+const FetchLaunch = _i1.OperationDefinitionNode(
+    type: _i1.OperationType.query,
+    name: _i1.NameNode(value: 'FetchLaunch'),
+    variableDefinitions: [
+      _i1.VariableDefinitionNode(
+          variable: _i1.VariableNode(name: _i1.NameNode(value: 'id')),
+          type: _i1.NamedTypeNode(
+              name: _i1.NameNode(value: 'String'), isNonNull: false),
+          defaultValue: _i1.DefaultValueNode(value: null),
+          directives: [])
+    ],
+    directives: [],
+    selectionSet: _i1.SelectionSetNode(selections: [
+      _i1.FieldNode(
+          name: _i1.NameNode(value: 'launch'),
+          alias: null,
+          arguments: [
+            _i1.ArgumentNode(
+                name: _i1.NameNode(value: 'id'),
+                value: _i1.VariableNode(name: _i1.NameNode(value: 'id')))
+          ],
+          directives: [],
+          selectionSet: _i1.SelectionSetNode(selections: [
+            _i1.FieldNode(
+                name: _i1.NameNode(value: 'rocket'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: _i1.SelectionSetNode(selections: [
+                  _i1.FieldNode(
+                      name: _i1.NameNode(value: 'rocket_type'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null),
+                  _i1.FieldNode(
+                      name: _i1.NameNode(value: 'second_stage'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: _i1.SelectionSetNode(selections: [
+                        _i1.FieldNode(
+                            name: _i1.NameNode(value: 'payloads'),
+                            alias: null,
+                            arguments: [],
+                            directives: [],
+                            selectionSet: _i1.SelectionSetNode(selections: [
+                              _i1.FieldNode(
+                                  name: _i1.NameNode(value: 'orbit'),
+                                  alias: null,
+                                  arguments: [],
+                                  directives: [],
+                                  selectionSet: null),
+                              _i1.FieldNode(
+                                  name: _i1.NameNode(value: 'payload_mass_kg'),
+                                  alias: null,
+                                  arguments: [],
+                                  directives: [],
+                                  selectionSet: null),
+                              _i1.FieldNode(
+                                  name: _i1.NameNode(value: 'customers'),
+                                  alias: null,
+                                  arguments: [],
+                                  directives: [],
+                                  selectionSet: null),
+                              _i1.FieldNode(
+                                  name: _i1.NameNode(value: 'nationality'),
+                                  alias: null,
+                                  arguments: [],
+                                  directives: [],
+                                  selectionSet: null)
+                            ]))
+                      ]))
+                ])),
+            _i1.FieldNode(
+                name: _i1.NameNode(value: 'links'),
+                alias: null,
+                arguments: [],
+                directives: [],
+                selectionSet: _i1.SelectionSetNode(selections: [
+                  _i1.FieldNode(
+                      name: _i1.NameNode(value: 'flickr_images'),
+                      alias: null,
+                      arguments: [],
+                      directives: [],
+                      selectionSet: null)
+                ]))
+          ]))
+    ]));
+const document = _i1.DocumentNode(definitions: [FetchLaunches, FetchLaunch]);

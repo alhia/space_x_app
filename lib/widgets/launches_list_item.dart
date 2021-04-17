@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:space_x_app/graphql/launches.data.gql.dart';
+import 'package:space_x_app/views/launches/launch_view.dart';
 
 class LaunchesListItem extends StatelessWidget {
   const LaunchesListItem({
@@ -17,7 +18,10 @@ class LaunchesListItem extends StatelessWidget {
       decoration: BoxDecoration(color: Colors.white12, borderRadius: BorderRadius.all(Radius.circular(8))),
       child: ListTile(
         contentPadding: EdgeInsets.all(8),
-        onTap: () {},
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => LaunchView(launchID: "launch.")),
+        ),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

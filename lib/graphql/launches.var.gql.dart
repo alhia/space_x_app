@@ -22,3 +22,20 @@ abstract class GFetchLaunchesVars
   static GFetchLaunchesVars? fromJson(Map<String, dynamic> json) =>
       _i1.serializers.deserializeWith(GFetchLaunchesVars.serializer, json);
 }
+
+abstract class GFetchLaunchVars
+    implements Built<GFetchLaunchVars, GFetchLaunchVarsBuilder> {
+  GFetchLaunchVars._();
+
+  factory GFetchLaunchVars([Function(GFetchLaunchVarsBuilder b) updates]) =
+      _$GFetchLaunchVars;
+
+  String? get id;
+  static Serializer<GFetchLaunchVars> get serializer =>
+      _$gFetchLaunchVarsSerializer;
+  Map<String, dynamic> toJson() =>
+      (_i1.serializers.serializeWith(GFetchLaunchVars.serializer, this)
+          as Map<String, dynamic>);
+  static GFetchLaunchVars? fromJson(Map<String, dynamic> json) =>
+      _i1.serializers.deserializeWith(GFetchLaunchVars.serializer, json);
+}
